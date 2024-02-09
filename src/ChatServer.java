@@ -16,16 +16,16 @@ public class ChatServer {
             System.out.println("Client connected: "+ clientSocket.getInetAddress());
 
             while(true) {
-                Scanner input = new Scanner(clientSocket.getInputStream());
-                Scanner serverInput = new Scanner(System.in);
+                Scanner otherInput = new Scanner(clientSocket.getInputStream());
+                Scanner closeInput = new Scanner(System.in);
                 PrintWriter output = new PrintWriter(clientSocket.getOutputStream(), true);
 
-                String messageIn = input.nextLine();
+                String messageIn = otherInput.nextLine();
                 System.out.println(clientSocket.getInetAddress() + ": " + messageIn);
 
-                String messageOut = serverInput.nextLine();
-                System.out.println(serverSocket.getInetAddress() + ": " + messageOut);
-                output.println(serverSocket.getInetAddress() + ": " + messageOut);
+                String messageOut = closeInput.nextLine();
+                System.out.println(clientSocket.getLocalAddress() + ": " + messageOut);
+                output.println(clientSocket.getLocalAddress() + ": " + messageOut);
             }
         } catch (Exception e) {
             e.printStackTrace();
