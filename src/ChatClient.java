@@ -12,16 +12,17 @@ public class ChatClient {
         try {
             Socket socket = new Socket(IPADDRESS, PORT);
 
+            System.out.println("Connected to: " + socket.getInetAddress());
+
             while(true) {
                 Scanner otherInput = new Scanner(socket.getInputStream());
                 Scanner closeInput = new Scanner(System.in);
                 PrintWriter output = new PrintWriter(socket.getOutputStream(), true);
 
                 String messageIn = otherInput.nextLine();
-                System.out.println(socket.getInetAddress() + ": " + messageIn);
+                System.out.println(messageIn);
 
                 String messageOut = closeInput.nextLine();
-                System.out.println(socket.getLocalAddress() + ": " + messageOut);
                 output.println(socket.getLocalAddress() + ": " + messageOut);
             }
         } catch (Exception e) {

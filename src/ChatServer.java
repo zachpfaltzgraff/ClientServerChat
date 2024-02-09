@@ -20,12 +20,11 @@ public class ChatServer {
                 Scanner closeInput = new Scanner(System.in);
                 PrintWriter output = new PrintWriter(clientSocket.getOutputStream(), true);
 
-                String messageIn = otherInput.nextLine();
-                System.out.println(clientSocket.getInetAddress() + ": " + messageIn);
-
                 String messageOut = closeInput.nextLine();
-                System.out.println(clientSocket.getLocalAddress() + ": " + messageOut);
                 output.println(clientSocket.getLocalAddress() + ": " + messageOut);
+
+                String messageIn = otherInput.nextLine();
+                System.out.println(messageIn);
             }
         } catch (Exception e) {
             e.printStackTrace();
