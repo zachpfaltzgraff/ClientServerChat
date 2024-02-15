@@ -32,7 +32,7 @@ public class ChatServer extends JFrame implements ActionListener {
         setTitle("Server");
 
         receiveWorker = new ReceiveWorker();
-        receiveWorker.execute(); // Start the SwingWorker to receive messages
+        receiveWorker.execute();
     }
 
     public static void main(String[] args) throws IOException {
@@ -87,13 +87,6 @@ public class ChatServer extends JFrame implements ActionListener {
                 System.out.println("Error receiving message: " + e.getMessage());
             }
             return null;
-        }
-
-        @Override
-        protected void process(java.util.List<String> chunks) {
-            for (String message : chunks) {
-                display.append(message + "\n");
-            }
         }
     }
 }

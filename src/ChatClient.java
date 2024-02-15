@@ -85,12 +85,5 @@ public class ChatClient extends JFrame implements ActionListener {
             }
             return null;
         }
-
-        @Override
-        protected void process(java.util.List<String> chunks) {
-            for (String message : chunks) {
-                display.append(message + "\n");
-            }
-        }
     }
 }
